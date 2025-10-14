@@ -5,21 +5,23 @@
         <form action="/listing/new" method="GET">
 
         </form>
-
-        <% for(let l of alllist){%>
-            <div class="card" style="width: 18rem;">
-                <img src="<%=l.image.url%>" class="card-img-top" alt="...">
+         <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+         <% for(let l of alllist){%>
+            <a href="/listing/<%=l._id%>" class="listing-link">
+                <div class="card" style="width: 18rem;">
+                <img src="<%=l.image.url%>" class="card-img-top" alt="..." style="height: 20rem">
+                <div class="card-img-overlay">abcd</div>
                 <div class="card-body">
                     <p class="card-text">
-                        <%=l.title%>
+                       <b><%=l.title%> </b> <br>
+                        <%=l.price.toLocaleString("en-IN")%>/night
                    </p>
                 </div>
             </div>
+            </a>
+            
             <% }%>
-                <ul>
-
-
-
-
-                </ul>
+         </div>
+        
+                
     </body>
