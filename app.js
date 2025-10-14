@@ -6,6 +6,7 @@ const Listing= require("./models/listing.js");
 const path=require('path');
 const methodoverride=require("method-override");
 const ejsmate=require("ejs-mate");
+//its now pushed//
 main()
 .then(()=>{
     console.log('connected to mongo');
