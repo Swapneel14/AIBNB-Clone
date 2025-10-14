@@ -1,0 +1,25 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <h3>All Lists</h3>
+        <form action="/listing/new" method="GET">
+
+        </form>
+
+        <% for(let l of alllist){%>
+            <div class="card" style="width: 18rem;">
+                <img src="<%=l.image.url%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <%=l.title%>
+                   </p>
+                </div>
+            </div>
+            <% }%>
+                <ul>
+
+
+
+
+                </ul>
+    </body>
