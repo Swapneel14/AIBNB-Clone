@@ -1,21 +1,35 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h3>edit</h3>
-   <form method="POST" action="/listing/<%= list._id %>?_method=PUT">
 
-       <input type="text" name="list[title]" value="<%=list.title%>">
-       <br>
-       <textarea name="list[description]"><%= list.description %></textarea>
+    <body>
+        <h3>edit</h3>
+        <form method="POST" action="/listing/<%= list._id %>?_method=PUT">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="list[title]" value="<%=list.title%>" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="list[description]" class="form-control"><%= list.description %></textarea>
 
-       <br>
-       <input type="text" name="list[image]" value="<%=list.image%>">
-       <br>
-       <input type="number" name="list[price]" value="<%=list.price%>">
-       <br>
-       <input type="text" name="list[location]" value="<%=list.location%>">
-       <br>
-       <input type="text" name="list[country]" value="<%=list.country%>">
-       <br>
-       <button>Add</button>
-    </form>
-</body>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL/Link</label>
+                <input type="text" name="list[image]" value="<%=list.image%>" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" name="list[price]" value="<%=list.price%>" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Loaction</label>
+                <input type="text" name="list[location]" value="<%=list.location%>" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="list[country]" value="<%=list.country%>" class="form-control">
+
+            </div>
+            <button>Add</button>
+        </form>
+    </body>
