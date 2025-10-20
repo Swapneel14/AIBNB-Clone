@@ -74,3 +74,12 @@ body{
 .add-btn{
     background-color: red!important;
 }
+.edit-btn{
+    background-color: red!important;
+}
+.show-img{
+    height: 30vh;
+}
+.btns{
+    display: flex;
+}
