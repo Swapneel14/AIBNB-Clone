@@ -42,6 +42,7 @@ router.post("/",
       
        
        await newlist.save();
+       req.flash("success","New Listing Created!");
        res.redirect("/listing");
       
 }))
@@ -52,6 +53,7 @@ router.get("/:id/edit",
      async(req,res)=>{
     let {id}=req.params;
     const list=await Listing.findById(id);
+    
     res.render("listings/edit.ejs",{list});
     }
    )
@@ -64,6 +66,7 @@ router.put("/:id",
      async(req,res)=>{
     let {id}=req.params;
    await Listing.findByIdAndUpdate(id,{...req.body.newlist});
+   req.flash("success","Edited Successfully");
    res.redirect(`/listing/${id}`);
     }
    )
@@ -76,6 +79,7 @@ router.delete("/:id",
      async(req,res)=>{
      let {id}=req.params;
      await Listing.findByIdAndDelete(id);
+     req.flash("success","Deleted Successfully");
      res.redirect("/listing");
     }
    )
