@@ -30,6 +30,10 @@ router.get("/new",(req,res)=>{
 router.get("/:id",async (req,res)=>{
     let {id}=req.params;
     const list=await Listing.findById(id).populate("reviews");
+    if(!list){
+      req.flash('error','No Such Resort is there');
+      return res.redirect("/listing");
+    }
     res.render("listings/show.ejs",{list});
 })
 
@@ -53,6 +57,10 @@ router.get("/:id/edit",
      async(req,res)=>{
     let {id}=req.params;
     const list=await Listing.findById(id);
+    if(!list){
+      req.flash('error','No Such Resort is there');
+      return res.redirect("/listing");
+    }
     
     res.render("listings/edit.ejs",{list});
     }

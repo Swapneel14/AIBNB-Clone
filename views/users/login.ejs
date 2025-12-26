@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <h2 class="col-8 offset-2">Login to Stay-Scape</h2>
+            <div class="col-8 offset-2">
+            
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+                
+               <div class="mb-3">
+                 <label for="username" class="form-label">Username</label>
+                <input 
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                required
+             />
+               <div class="valid-feedback">Looks Good</div>
+
+              
+               <label for="password" class="form-label mb-3">password</label>
+                <input 
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                required
+             />
+               <div class="valid-feedback">OK!</div>
+               <button class="btn btn-success mt-3">Login</button>
+               
+            </form>
+
+            </div>
+</div>
