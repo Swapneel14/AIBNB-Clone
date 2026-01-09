@@ -5,6 +5,7 @@ const err = require("../utils/err.js");
 const {listingSchema,reviewSchema}=require("../schema.js");
 const Review = require("../models/review.js");
 const Listing= require("../models/listing.js");
+const { isLoggedin, isreviewAuthor } = require("../middleware.js");
 
 
 
@@ -24,12 +25,16 @@ const validatereview = (req, res, next) => {
 //Reviews
 //Post Review Route
 router.post("/",
+    isLoggedin,
     validatereview,
     wrap(
         async (req, res, next) => {
             let { id } = req.params;
             let list = await Listing.findById(id);
             let new_review = new Review(req.body.review);
+
+            new_review.author=req.user._id;
+            console.log(new_review)
 
             list.reviews.push(new_review);
             await new_review.save();
@@ -42,7 +47,10 @@ router.post("/",
 
 //Delete Review Route
 
-router.delete("/:reviewid", wrap(
+router.delete("/:reviewid",
+    isLoggedin,
+    isreviewAuthor,
+     wrap(
     async (req, res, next) => {
         let { id, reviewid } = req.params;
         await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewid } })
